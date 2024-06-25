@@ -43,3 +43,13 @@ const unsigned int TICK_INTERVAL = 1;
 //Wifi configuration
 #define SECRET_SSID "vmilabs"
 #define SECRET_PASS "vmilabs1234!"
+
+//mqtt configuration
+const char g_broker[] = "192.168.0.109";
+const int g_brokerPort = 1883;
+const char g_brokerUser[] = "mqtt:mqtt-test";
+const char g_brokerPwd[] = "mqtt-test";
+const char g_pingTopic[] ="d2cping/ohand/001";
+const char g_propertyTopic[] ="d2c/ohand/001/property";
+const char g_serviceTopic[] ="c2d/ohand/001/service";
+const char g_serviceRspTopic[] ="c2drsp/ohand/001/service";

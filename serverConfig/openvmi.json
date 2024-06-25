@@ -1,0 +1,78 @@
+{
+    "contextPath": "/ws",
+    "enableConsoleLog": true,
+    "enableFileLog": false,
+    "host": "127.0.0.1",
+    "logfilePath": "./",
+    "logLevel": "info",
+    "mqttbrokerurl": "tcp://localhost:1883",
+    "port": 8081,
+    "moduleName": ["notification","ping"],
+    "mqttUser": "mqtt:mqtt-test",
+    "mqttPassword": "mqtt-test",
+    "subscribeTopic": ["d2cping/#","d2c/#", "d2cevent/#", "c2dcommandrsp/#"],
+    "notificationTopic": ["d2c","c2drsp"],
+    "pingTopic": ["d2cping"],
+    "deviceTypeOptions": {
+      "ohand": "智能机械手"
+    },
+    "persistentDevices": [
+      {
+        "deviceId": "001",
+        "deviceType": "ohand",
+        "deviceName": "1号机械手",
+        "deviceLocation": "上海",
+        "deviceDescription": "6自由度智能机械手"
+      },
+      {
+        "deviceId": "002",
+        "deviceType": "ohand",
+        "deviceName": "2号机械手",
+        "deviceLocation": "上海",
+        "deviceDescription": "6自由度智能机械手"
+      },
+      {
+        "deviceId": "003",
+        "deviceType": "ohand",
+        "deviceName": "3号机械手",
+        "deviceLocation": "上海",
+        "deviceDescription": "6自由度智能机械手"
+      },
+      {
+        "deviceId": "004",
+        "deviceType": "ohand",
+        "deviceName": "4号机械手",
+        "deviceLocation": "上海",
+        "deviceDescription": "6自由度智能机械手"
+      },
+      {
+        "deviceId": "005",
+        "deviceType": "ohand",
+        "deviceName": "5号机械手",
+        "deviceLocation": "上海",
+        "deviceDescription": "6自由度智能机械手"
+      },
+      {
+        "deviceId": "006",
+        "deviceType": "ohand",
+        "deviceName": "6号机械手",
+        "deviceLocation": "上海",
+        "deviceDescription": "6自由度智能机械手"
+      },
+      {
+        "deviceId": "007",
+        "deviceType": "ohand",
+        "deviceName": "7号机械手",
+        "deviceLocation": "上海",
+        "deviceDescription": "6自由度智能机械手"
+      },
+      {
+        "deviceId": "008",
+        "deviceType": "ohand",
+        "deviceName": "8号机械手",
+        "deviceLocation": "上海",
+        "deviceDescription": "6自由度智能机械手"
+      }
+    ]
+  }
+  

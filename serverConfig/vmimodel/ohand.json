@@ -1,0 +1,83 @@
+{
+    "properties": [
+      {
+        "identifier": "finger0",
+        "name": "0号指",
+        "dataType": {
+          "type": "int",
+          "specs": {
+            "unitName": "d"
+          }
+        }
+      },
+      {
+        "identifier": "finger1",
+        "name": "1号指",
+        "dataType": {
+          "type": "int",
+          "specs": {
+            "unitName": "d"
+          }
+        }
+      },
+      {
+        "identifier": "finger2",
+        "name": "2号指",
+        "dataType": {
+          "type": "int",
+          "specs": {
+            "unitName": "d"
+          }
+        }
+      },
+      {
+        "identifier": "finger3",
+        "name": "3号指",
+        "dataType": {
+          "type": "int",
+          "specs": {
+            "unitName": "d"
+          }
+        }
+      },
+      {
+        "identifier": "finger4",
+        "name": "4号指",
+        "dataType": {
+          "type": "int",
+          "specs": {
+            "unitName": "d"
+          }
+        }
+      },
+      {
+        "identifier": "thumb",
+        "name": "大拇指",
+        "dataType": {
+          "type": "int",
+          "specs": {
+            "unitName": "d"
+          }
+        }
+      }
+    ],
+    "services": [
+      {
+        "identifier": "setfingerpos",
+        "name": "手指设置",
+        "method": "thing.service.finger.set",
+        "inputData": [
+          {
+            "identifier": "fingers",
+            "name": "手指位置",
+            "dataType": {
+              "type": "text"
+            }
+          }
+        ],
+        "outputData": []
+      }
+    ],
+    "events": [
+    ]
+  }
