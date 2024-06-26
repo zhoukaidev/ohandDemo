@@ -1,4 +1,4 @@
-#include <Arduino.h>
+ #include <Arduino.h>
 #include "config.h"
 #include <ArduinoMqttClient.h>
 #include <WiFiNINA.h>
@@ -203,7 +203,7 @@ void setup() {
 #endif
 
   g_WiFiMonitorTimer.every(12000, checkWifiConnections);
-  g_DevicePingTimer.every(23000, devicePings);
+  g_DevicePingTimer.every(17000, devicePings);
   CloseLED();
 }
 
@@ -217,17 +217,25 @@ void loop() {
 void onMqttMessage(int messageSize) {
   Serial.print("topic");
   Serial.println(g_mqttClient.messageTopic());
-  StaticJsonDocument<1024> doc;
-  DeserializationError error = deserializeJson(doc, g_mqttClient);
+  StaticJsonDocument<1024> request;
+  DeserializationError error = deserializeJson(request, g_mqttClient);
   if(error) {
     Serial.print("-->deser failed:");
     Serial.println(error.f_str());
     return;
   }
-  if(!doc.containsKey("method")) {return;}
-  const char* method = doc["method"];
+  if(!request.containsKey("Request")) {return;}
+  StaticJsonDocument<1024> actionObj;
+  const char * requestStr = request["Request"];
+  error = deserializeJson(actionObj, requestStr);
+  if(error) {
+    Serial.print("-->deser action failed:");
+    Serial.println(error.f_str());
+    return;
+  }
+  const char* method = actionObj["method"];
   if(strcmp(method, "thing.service.finger.set")) {return;}
-  const char* paras = doc["inputData"]["fingers"];
+  const char* paras = actionObj["inputData"]["fingers"];
   String parasStr = paras;
   int findStart = 0;
   for(int i=0; i < 5; i++) {

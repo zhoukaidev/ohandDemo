@@ -45,7 +45,7 @@ const unsigned int TICK_INTERVAL = 1;
 #define SECRET_PASS "vmilabs1234!"
 
 //mqtt configuration
-const char g_broker[] = "192.168.0.109";
+const char g_broker[] = "192.168.0.102";
 const int g_brokerPort = 1883;
 const char g_brokerUser[] = "mqtt:mqtt-test";
 const char g_brokerPwd[] = "mqtt-test";
