@@ -1,0 +1,25 @@
+{
+    "steps": [
+      {
+        "action": "setfingers",
+        "params": [
+          {"deviceType": "ohand", "deviceId": "001", "value": "0,0,0,0,0,0"},
+          {"deviceType": "ohand", "deviceId": "002", "value": "0,0,0,0,0,0"}
+        ]
+      },
+      {
+        "action": "sleep",
+        "params": 5
+      },
+      {
+        "action": "setfingers",
+        "params": [
+          {"deviceType": "ohand", "deviceId": "001", "value": "0,65535,20000,10000,0,0"}
+        ]
+      },
+      {
+        "action": "sleep",
+        "params": 10
+      }
+    ]
+  }
