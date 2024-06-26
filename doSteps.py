@@ -4,6 +4,11 @@ from vmipy.vmilog import getLogger, LogLevelEnum
 import threading
 import queue
 import time
+from datetime import datetime
+
+def GetCurrentTimeStmpStr():
+    _now = datetime.now()
+    return "{}:{}.{}".format(_now.hour, _now.minute, _now.second)
 
 class OHand:
     def __init__(self, host="localhost", port=1883, 
@@ -83,6 +88,7 @@ class OHand:
                 self._client.publish(topic=self._c2dTopic,payload=json.dumps(c2dCmd),qos=0)
 
     def setFingers(self, paras):
+        self._logger.info("-->{}:{},{} setFinger:{}".format(GetCurrentTimeStmpStr(),self._deviceType, self._deviceId, paras))
         self._queue.put(paras)
 
 class Configuration:
@@ -100,6 +106,7 @@ class Configuration:
     broker_port = 1883
 
 def main():
+    _logger = getLogger(logName="main", enableConsole=True, logLevel=LogLevelEnum.info)
     ohandObj = {}
     ohandThreads =[]
     for conf in Configuration.ohands:
@@ -110,6 +117,7 @@ def main():
         t = threading.Thread(target=ohandObj[ohandKey].Run, daemon=True)
         t.start()
         ohandThreads.append(t)
+    time.sleep(5)
     with open("steps.json") as steps_file:
         file_contents = steps_file.read()
     parsed_stpes = json.loads(file_contents)
@@ -125,6 +133,7 @@ def main():
                         ohand.setFingers(param["value"])
             elif thisStep["action"] == "sleep":
                 sleepDuration = thisStep["params"]
+                _logger.info("+++>{} Sleep:{}".format(GetCurrentTimeStmpStr(),sleepDuration))
                 time.sleep(sleepDuration)
     
 
