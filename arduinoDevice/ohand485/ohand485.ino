@@ -58,11 +58,11 @@ bool initOhand() {
 
 void setup()
 {
+  delay(1000);
   uint8_t err;
 
   pinMode(LED, OUTPUT);
   digitalWrite(LED, LED_ON_STATE);
-
   Serial.begin(115200);           // start serial for output
   //while (!Serial);
 
@@ -80,9 +80,6 @@ void setup()
   HAND_SetCommandTimeOut(255);
   HAND_SetTimerFunction(millis, delay);
 
-  // Uncomment following lines to let oHand calibrate;
-  //  err = HAND_Calibrate(ADDRESS_HAND, errorHandler);
-  //  while (1);
   int ohandCount = sizeof(g_ohandId) / sizeof(int);
   for (int i = 0; i < ohandCount; ++i) {
     do
@@ -91,7 +88,8 @@ void setup()
       uint16_t revision;
 
       err = HAND_GetFirmwareVersion(g_ohandId[i], &major_ver, &minor_ver, &revision, errorHandler);
-      LOG_I("HAND_GetFirmwareVersion() returned 0x%02x\n", err);
+      
+      LOG_I("HAND_GetFirmwareVersion() returned 0x%02x, handid:%02x\n", err, g_ohandId[i]);
 
       if (err == HAND_RESP_SUCCESS)
       {
@@ -138,12 +136,12 @@ void setup()
 #endif
 
   initOhand();
-  for(int i = 0; i< 5; i++) {
-                digitalWrite(LED, LED_ON_STATE);
-            delay(500);
-            digitalWrite(LED, !LED_ON_STATE);
-            delay(500);
-    }
+  for (int i = 0; i < 5; i++) {
+    digitalWrite(LED, LED_ON_STATE);
+    delay(500);
+    digitalWrite(LED, !LED_ON_STATE);
+    delay(500);
+  }
 }
 
 void loop()
