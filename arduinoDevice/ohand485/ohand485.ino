@@ -110,7 +110,7 @@ void setup()
       }
       else
       {
-        delay(100);
+        delay(500);
       }
     } while (err != HAND_RESP_SUCCESS);
   }
